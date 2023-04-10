@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Sam Dams"> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Formulier Sam Dams r0940635</title>
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <main class="container">
+        <div class="card mt-3">
+            <div class="card-header">
+                Welkom bij het contactformulier van student Sam Dams!
+            </div>
+            <div class="card-body">
+                <h1>Laat ons contact houden!</h1>
+                <h4>Momenteel nog student, binnenkort collega? </h4>
+                <!-- alles over forms: https://getbootstrap.com/docs/4.0/components/forms/ -->
+                <!--  mx auto class zorgt voor horizontal center fixing https://getbootstrap.com/docs/4.0/utilities/spacing/-->
+                <!--  novaidate zorgt ervoor dat we eigen valideren berichten kunnen geven https://getbootstrap.com/docs/5.0/forms/validation/-->
+                <form class="mx-auto" novalidate>
+                    <div class="row">
+                      <div class="col">
+                        <label for="examplevoornaam">Geef je voornaam op:</label>
+                        <input type="text" class="form-control" placeholder="Voornaam" required>
+                        <div class="valid-feedback">Leuke naam!</div>
+                      </div>
+                      <div class="col">
+                        <label for="exampleachternaam">Geef je achternaam op:</label>
+                        <input type="text" class="form-control" placeholder="Achternaam" required>
+                        <div class="valid-feedback">En dit past er echt méga goed bij!</div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label class="sr-only" for="inlineFormInputGroup">Geef je gebruikersnaam op:</label>
+                                <div class="input-group mb-2">
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text">@</div>
+                                  </div>
+                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="r0940635">
+                                </div>
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Geef je mail adres op:</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="voorbeeld@email.com" required>
+                            <small id="emailHelp" class="form-text text-muted">Dit mail adres wordt nooit gedeeld met anderen.</small>
+                                <div class="invalid-feedback">
+                                    Ik heb echt een mail nodig, sorry!
+                                </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="inputPassword5">Kies een wachtwoord:</label>
+                            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+                            <small id="passwordHelpBlock" class="form-text text-muted">
+                            Je wachtwoord moet minimaal 7 tekens lang zijn en een cijfer bevatten.
+                            </small>
+                        </div>
+                        <div class="col">
+                            <label for="inputPassword5">Herhaal je wachtwoord:</label>
+                            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="inputAddress2">Wat is je adres:</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Uw adres en huisnummer">
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                          <label for="inputCity">Land:</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>België</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputState">Provincie</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>Antwerpen</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label for="inputZip">postcode</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>2000</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Ik heb interesse in volgende skills:</label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                          <option>Powerpoint</option>
+                          <option>Word</option>
+                          <option>Excel</option>
+                          <option>R-statistics</option>
+                          <option>C#</option>
+                          <option>HTML</option>
+                          <option>CSS</option>
+                          <option>Visual Studio</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Opmerkingen of vragen:</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <small id="emailHelp" class="form-text text-muted">'t Is oké, schrijf echt maar wat je wil!'</small>
+                      </div>            
+                    <hr>
+                    <!-- hier nog checkboxes toevoegen -->
+                    <button type="submit" class="btn btn-primary">Ja! Ik ben tevreden!</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script>
+    // disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('mx-auto');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
