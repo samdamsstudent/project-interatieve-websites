@@ -76,7 +76,9 @@
                         <div class="form-group col-md-6">
                           <label for="land">Land:</label>
                           <select id="land" class="form-control">
-                            <option selected>België</option>
+                            <!--geen bestaande placeholders voor select box https://www.tutorialrepublic.com/faq/how-to-make-a-placeholder-for-a-select-box-in-html.php-->
+                            <option value="" disabled selected hidden>Kies een land</option>
+                            <option>België</option>
                             <option>Frankrijk</option>
                             <option>Duitsland</option>
                             <option>Nederland</option>
@@ -90,7 +92,8 @@
                         <div class="form-group col-md-4">
                           <label for="provincie">Provincie</label>
                           <select id="provincie" class="form-control">
-                            <option selected>Antwerpen</option>
+                            <option value="" disabled selected hidden>Kies een provincie</option>
+                            <option>Antwerpen</option>
                             <option>Limburg</option>
                             <option>Oost-Vlaanderen</option>
                             <option>West-Vlaanderen</option>
@@ -177,21 +180,29 @@
     let provincie = document.getElementById("provincie").value;
     let postcode = document.getElementById("postcode").value;
 
-    //hier eigenlijk melding nodig maar voornaam is efficiënter
+    //hier eigenlijk melding nodig maar kortere tekst is efficiënter
+    //controle op lege velden
     checkEmptyField(voornaam,"voornaam");
     checkEmptyField(achternaam,"achternaam");
     checkEmptyField(gebruikersnaam,"gebruikersnaam");
     checkEmptyField(adres,"adres");
-    //hier fout: geen tekst
     checkEmptyField(land,"land");
     checkEmptyField(provincie,"provincie");
 
-    //test
-    document.getElementById('errors').innerHTML = errors[4];
-  }
+    let checkemail = validateEmail(email);
+    if (checkemail == false) errors.push("E-mailadres is niet correct.");
+    //toevoegen aan array as false
+    
+
+    //We itereren door de arrar met een for loop om de foutmeldingen te tonen
+    // hier nog als array leeg is dan juist, anders dit
+    for (let i = 0; i < errors.length; i++) {
+      document.getElementById('errors').innerHTML += `${errors[i]}<br>`;
+        }
+  };
 
   knop.addEventListener("click", validateForm,false);
-
+  //nog brek toevoefen om dubbel te vermijden?
   checkEmptyField = (veld, melding) => {
       let zin = "";
 
@@ -199,33 +210,67 @@
             zin += `Het veld ${melding} is vereist.`;
             errors.push(zin);         
     }
-  };
+    //aangezien we zelf een optie hebben ingevuld definëren we deze als fout. dit zou gven dat als iemand in een ander veld
+    // kies een land of kies een provinvie invuld dit ook fout is, maar dat is hier onzinning
+    else if (veld == "Kies een land"){
+            zin += `Het veld ${melding} is vereist.`;
+            errors.push(zin);         
+    }
 
+    //aangezien we zelf een optie hebben ingevuld definëren we deze als fout
+    else if (veld == "Kies een provincie"){
+            zin += `Het veld ${melding} is vereist.`;
+            errors.push(zin);         
+    }
+  };
+  
+  //hier nog het streepje van e- fiksen, dit geeft fout. hier bvb als toegevoegd tellen en dan skipt de rest, lege waarde nog fiksen
+  validateEmail = email => {
+      //eerst mail opslitsen in gebruikersnaam en domein https://linuxhint.com/split-full-name-into-first-and-last-in-javascript/
+      //break toevoegen?
+      let mail = email.split('@');
+      let gebruikersnaam = mail[0];
+      //eerste letter: https://www.freecodecamp.org/news/how-to-capitalize-the-first-letter-of-a-string-in-javascript/
+      let eersteKarakterGebruikersnaam = gebruikersnaam.charAt(0);
+      let domein = mail[1];
+      let eersteKarakterDomein = domein.charAt(0);
+      let controle = 0;   
+
+      //voorwaarden gebruikersnaam: minstens 1 char lang 
+      if (gebruikersnaam.length < 1){
+          controle ++;           
+      }
+
+      //voorwaarden gebruikersnaam: eerste char geen punt of koppelteken
+      if (eersteKarakterGebruikersnaam == "." || eersteKarakterGebruikersnaam == "-"){
+          controle ++;
+      }
+
+      //voorwaarden gebruikersnaam: enkel letters, nummers of underscores (en punten of koppeltekens hier, niet als eerste is hierboven getest) bevatten. 
+      //Geeft true terug als input enkel wat binnen haakjes bevat. https://regexr.com./ https://codingbeautydev.com/blog/javascript-check-if-string-contains-only-letters-and-numbers/?utm_content=cmp-true https://stackoverflow.com/questions/28708711/regex-must-start-with-a-letter-or-number-string-can-only-have-letters-numbers
+      if (/^[_.A-Za-z0-9-]*$/.test(gebruikersnaam) == false) controle ++;
+
+      //voorwaarden domein: eerste char letter of nummer
+      if (/^[A-Za-z0-9]*$/.test(eersteKarakterDomein) == false) controle ++;
+
+      //voorwaarden domein: mag punt of koppelteken bevatten. Hier niet opgegeven maar ik ga er van uit letters en nummers ook. Hier geen underscores toegestaan.
+      if (/^[.A-Za-z0-9-]*$/.test(gebruikersnaam) == false) controle ++;
+
+      //controle:document.write(controle)
+      //if not null than false
+      if (controle == 0){
+          return true;
+      }
+
+      else {return false;}
+  };
 
 </script>
 
-<!--https://linuxhint.com/add-id-to-element-using-javascript/
-https://stackoverflow.com/questions/15383765/javascript-viewing-object-htmlinputelement-->
-<!--nog toevoegen: <h4 style="color: brown;">Yikes, errors..</h4><br>-->
 
-<!--hieronder is stnds bootstrap validation-->
-<!--<script>
-    // disabling form submissions if there are invalid fields
-  //  (function() {
-    //  'use strict';
-      //window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        //var forms = document.getElementsByClassName('mx-auto');
-        // Loop over them and prevent submission
-        //var validation = Array.prototype.filter.call(forms, function(form) {
-          //form.addEventListener('submit', function(event) {
-            //if (form.checkValidity() === false) {
-              //event.preventDefault();
-              //event.stopPropagation();
-            //}
-            //form.classList.add('was-validated');
-          //}, false);
-        //});
-      //}, false);
-    //})();
-    //</script> -->
+<!-- TO DO:
+  nog toevoegen: <h4 style="color: brown;">Yikes, errors..</h4><br>
+tekst in errors nog kleur geven
+//nog goed toevoegen
+domein mail is alles achter de @-->
+
