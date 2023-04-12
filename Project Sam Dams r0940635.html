@@ -11,141 +11,221 @@
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
     <main class="container">
-        <div class="card mt-3">
+      <div class="card-body">
+        <div style="width: 60%; float:left; height:100%; margin:10px;">
+        <div class="card mt-3 ">
             <div class="card-header">
                 Welkom bij het contactformulier van student Sam Dams!
             </div>
-            <div class="card-body">
-                <h1>Laat ons contact houden!</h1>
-                <h4>Momenteel nog student, binnenkort collega? </h4>
+                <h1 style="text-align: center;">Laat ons contact houden!</h1>
+                <h4 style="text-align: center;">Momenteel nog student, binnenkort collega? </h4>
                 <!-- alles over forms: https://getbootstrap.com/docs/4.0/components/forms/ -->
                 <!--  mx auto class zorgt voor horizontal center fixing https://getbootstrap.com/docs/4.0/utilities/spacing/-->
                 <!--  novaidate zorgt ervoor dat we eigen valideren berichten kunnen geven https://getbootstrap.com/docs/5.0/forms/validation/-->
-                <form class="mx-auto" novalidate>
+              
+                <form style="margin: 20px;">
                     <div class="row">
                       <div class="col">
-                        <label for="examplevoornaam">Geef je voornaam op:</label>
-                        <input type="text" class="form-control" placeholder="Voornaam" required>
-                        <div class="valid-feedback">Leuke naam!</div>
+                        <label for="voornaam">Geef je voornaam op:</label>
+                        <input type="text" id="voornaam" class="form-control" placeholder="Voornaam">
                       </div>
                       <div class="col">
-                        <label for="exampleachternaam">Geef je achternaam op:</label>
-                        <input type="text" class="form-control" placeholder="Achternaam" required>
-                        <div class="valid-feedback">En dit past er echt méga goed bij!</div>
+                        <label for="achternaam">Geef je achternaam op:</label>
+                        <input type="text" id="achternaam" class="form-control" placeholder="Achternaam">
                       </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col">
-                            <label class="sr-only" for="inlineFormInputGroup">Geef je gebruikersnaam op:</label>
+                            <label class="sr-only" for="gebruikersnaam">Geef je gebruikersnaam op:</label>
                                 <div class="input-group mb-2">
                                   <div class="input-group-prepend">
                                     <div class="input-group-text">@</div>
                                   </div>
-                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="r0940635">
+                                    <input type="text" class="form-control" id="gebruikersnaam" placeholder="r0940635">
                                 </div>
                         </div>
                         <div class="col">
-                            <label for="exampleInputEmail1">Geef je mail adres op:</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="voorbeeld@email.com" required>
+                            <label for="email">Geef je mail adres op:</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="voorbeeld@email.com">
                             <small id="emailHelp" class="form-text text-muted">Dit mail adres wordt nooit gedeeld met anderen.</small>
-                                <div class="invalid-feedback">
-                                    Ik heb echt een mail nodig, sorry!
-                                </div>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col">
-                            <label for="inputPassword5">Kies een wachtwoord:</label>
-                            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+                            <label for="wachtwoord">Kies een wachtwoord:</label>
+                            <input type="password" id="wachtwoord" class="form-control" aria-describedby="passwordHelpBlock">
                             <small id="passwordHelpBlock" class="form-text text-muted">
                             Je wachtwoord moet minimaal 7 tekens lang zijn en een cijfer bevatten.
                             </small>
                         </div>
                         <div class="col">
-                            <label for="inputPassword5">Herhaal je wachtwoord:</label>
-                            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+                            <label for="checkwachtwoord">Herhaal je wachtwoord:</label>
+                            <input type="password" id="checkwachtwoord" class="form-control" aria-describedby="passwordHelpBlock">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="inputAddress2">Wat is je adres:</label>
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="Uw adres en huisnummer">
+                        <label for="adres">Wat is je adres:</label>
+                        <input type="text" class="form-control" id="adres" placeholder="Uw adres en huisnummer">
                     </div>
                     <br>
                     <div class="row">
                         <div class="form-group col-md-6">
-                          <label for="inputCity">Land:</label>
-                          <select id="inputState" class="form-control">
+                          <label for="land">Land:</label>
+                          <select id="land" class="form-control">
                             <option selected>België</option>
-                            <option>...</option>
+                            <option>Frankrijk</option>
+                            <option>Duitsland</option>
+                            <option>Nederland</option>
+                            <option>Spanje</option>
+                            <option>Italië</option>
+                            <option>Griekenland</option>
+                            <option>Polen</option>
+                            <option>Portugal</option>
                           </select>
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputState">Provincie</label>
-                          <select id="inputState" class="form-control">
+                          <label for="provincie">Provincie</label>
+                          <select id="provincie" class="form-control">
                             <option selected>Antwerpen</option>
-                            <option>...</option>
+                            <option>Limburg</option>
+                            <option>Oost-Vlaanderen</option>
+                            <option>West-Vlaanderen</option>
+                            <option>Vlaams-Brabant</option>
                           </select>
                         </div>
                         <div class="form-group col-md-2">
-                          <label for="inputZip">postcode</label>
-                          <select id="inputState" class="form-control">
-                            <option selected>2000</option>
-                            <option>...</option>
-                          </select>
+                          <label for="postcode">Postcode:</label>
+                        <input type="text" id="postcode" class="form-control" placeholder="2000" required>
                         </div>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Ik heb interesse in volgende skills:</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                          <option>Powerpoint</option>
-                          <option>Word</option>
-                          <option>Excel</option>
-                          <option>R-statistics</option>
-                          <option>C#</option>
-                          <option>HTML</option>
-                          <option>CSS</option>
-                          <option>Visual Studio</option>
-                        </select>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Opmerkingen of vragen:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <small id="emailHelp" class="form-text text-muted">'t Is oké, schrijf echt maar wat je wil!'</small>
-                      </div>            
+                    </div>     
                     <hr>
-                    <!-- hier nog checkboxes toevoegen -->
-                    <button type="submit" class="btn btn-primary">Ja! Ik ben tevreden!</button>
+                    <div class="row">
+                      <div class="col">
+                        <h4>Hou me op de hoogte</h4>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            Inschrijven op de nieuwsbrief.
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                          <label class="form-check-label" for="defaultCheck2">
+                            Ik ga akkoord met de algemene voorwaarden.
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <h4>Betaling</h4>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                          <label class="form-check-label" for="exampleRadios1">
+                            Banking app
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                          <label class="form-check-label" for="exampleRadios2">
+                            Overschrijving
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                          <label class="form-check-label" for="exampleRadios3">
+                            Visa card
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
+                          <label class="form-check-label" for="exampleRadios4">
+                            PayPal
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <button type="button" id="submitknop" class="btn btn-primary" style="margin-bottom: 15px;">Ja! Ik ben tevreden!</button>
                 </form>
-            </div>
+              </div>
         </div>
+        <div style="width: 30%; float:left; height:100%; margin:15px">
+          <!--padding nog vrbergen-->
+          <div id="errors" style="background-color: hwb(323 51% 9% / 0.836); padding: 10px;">
+          </div>
+        </div>
+      </div>
     </main>
 </body>
 
 <script>
+  let knop = document.getElementById("submitknop");
+  let errors = new Array();
+
+  validateForm = () => {
+    let voornaam = document.getElementById("voornaam").value;
+    let achternaam = document.getElementById("achternaam").value;
+    let gebruikersnaam = document.getElementById("gebruikersnaam").value;
+    let email = document.getElementById("email").value;
+    let wachtwoord = document.getElementById("wachtwoord").value;
+    let checkwachtwoord = document.getElementById("checkwachtwoord").value;
+    let adres = document.getElementById("adres").value;
+    let land = document.getElementById("land").value;
+    let provincie = document.getElementById("provincie").value;
+    let postcode = document.getElementById("postcode").value;
+
+    //hier eigenlijk melding nodig maar voornaam is efficiënter
+    checkEmptyField(voornaam,"voornaam");
+    checkEmptyField(achternaam,"achternaam");
+    checkEmptyField(gebruikersnaam,"gebruikersnaam");
+    checkEmptyField(adres,"adres");
+    //hier fout: geen tekst
+    checkEmptyField(land,"land");
+    checkEmptyField(provincie,"provincie");
+
+    //test
+    document.getElementById('errors').innerHTML = errors[4];
+  }
+
+  knop.addEventListener("click", validateForm,false);
+
+  checkEmptyField = (veld, melding) => {
+      let zin = "";
+
+      if (veld == ""){
+            zin += `Het veld ${melding} is vereist.`;
+            errors.push(zin);         
+    }
+  };
+
+
+</script>
+
+<!--https://linuxhint.com/add-id-to-element-using-javascript/
+https://stackoverflow.com/questions/15383765/javascript-viewing-object-htmlinputelement-->
+<!--nog toevoegen: <h4 style="color: brown;">Yikes, errors..</h4><br>-->
+
+<!--hieronder is stnds bootstrap validation-->
+<!--<script>
     // disabling form submissions if there are invalid fields
-    (function() {
-      'use strict';
-      window.addEventListener('load', function() {
+  //  (function() {
+    //  'use strict';
+      //window.addEventListener('load', function() {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('mx-auto');
+        //var forms = document.getElementsByClassName('mx-auto');
         // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-    })();
-    </script>
+        //var validation = Array.prototype.filter.call(forms, function(form) {
+          //form.addEventListener('submit', function(event) {
+            //if (form.checkValidity() === false) {
+              //event.preventDefault();
+              //event.stopPropagation();
+            //}
+            //form.classList.add('was-validated');
+          //}, false);
+        //});
+      //}, false);
+    //})();
+    //</script> -->
