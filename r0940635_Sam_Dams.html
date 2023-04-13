@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Sam Dams"> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>r0940635_Sam_Dams</title>
+
+</head>
+
+<body>
+    <main class="container">
+      <div class="card-body">
+        <!-- 2 kolommen naast elkaar maken -->
+        <div style="width: 60%; float:left; height:100%; margin:10px;">
+        <div class="card mt-3 ">
+          <!-- dit was niet gevraagd maar vond ik zelf een mooie toevoeging -->
+            <div class="card-header" style="text-align: center;">
+                <strong>Welkom bij het project van student Sam Dams met r-nummer r0940635!</strong>
+            </div>
+                <!-- gekozen om tekst te centreren, puur voor esthetische redenen -->
+                <h1 style="text-align: center;">Registreer</h1>
+                <h5 style="text-align: center;">Meld je aan bij Anoroc Services, wij beschermen jouw software tegen malware!</h4>
+                <!-- alles over forms: https://getbootstrap.com/docs/4.0/components/forms/ -->
+                <form style="margin: 20px;">
+                    <div class="row">
+                      <div class="col">
+                        <!-- ik dacht in de opgave te zien dat de tekst boven de velden vetgedrukt was, vandaar de toevoeging 'strong'. -->
+                        <!-- sowieso hier persoonlijk fan van vetgedrukt om de tekst te accentueren -->
+                        <!-- net iets andere tekst geschreven dan het voorbeeld, maar essentie is dezelfde -->
+                        <label for="voornaam"><strong>Geef je voornaam op:</strong></label>
+                        <input type="text" id="voornaam" class="form-control" placeholder="Voornaam">
+                      </div>
+                      <div class="col">
+                        <label for="achternaam"><strong>Geef je achternaam op:</strong></label>
+                        <input type="text" id="achternaam" class="form-control" placeholder="Achternaam">
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label class="sr-only" for="gebruikersnaam"><strong>Geef je gebruikersnaam op:</strong></label>
+                                <div class="input-group mb-2">
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text">@</div>
+                                  </div>
+                                    <input type="text" class="form-control" id="gebruikersnaam" placeholder="r0940635">
+                                </div>
+                        </div>
+                        <div class="col">
+                            <label for="email"><strong>Geef je e-mail adres op:</strong></label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="voorbeeld@email.com">
+                            <!-- kleine toevoeging die me toepasselijk leek -->
+                            <small id="emailHelp" class="form-text text-muted">Dit e-mail adres wordt nooit gedeeld met anderen.</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="wachtwoord"><strong>Kies een wachtwoord:</strong></label>
+                            <input type="password" id="wachtwoord" class="form-control" aria-describedby="passwordHelpBlock">
+                            <small id="passwordHelpBlock" class="form-text text-muted">
+                            Je wachtwoord moet minimaal 8 tekens lang zijn.
+                            </small>
+                        </div>
+                        <div class="col">
+                            <label for="checkwachtwoord"><strong>Herhaal je wachtwoord:</strong></label>
+                            <input type="password" id="checkwachtwoord" class="form-control" aria-describedby="passwordHelpBlock">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="adres"><strong>Wat is je adres:</strong></label>
+                        <input type="text" class="form-control" id="adres" placeholder="Uw adres en huisnummer">
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                          <label for="land"><strong>Land:</strong></label>
+                          <select id="land" class="form-control">
+                            <!--geen bestaande placeholders voor select box https://www.tutorialrepublic.com/faq/how-to-make-a-placeholder-for-a-select-box-in-html.php-->
+                            <!-- gekozen om de keuzeoptie uit te schakelen na een keuze gemaakt te hebben-->
+                            <!-- gekozen om geen pijltes te zetten uit esthetische redenen-->
+                            <option value="" disabled selected hidden>Kies een land</option>
+                            <option>België</option>
+                            <option>Frankrijk</option>
+                            <option>Duitsland</option>
+                            <option>Nederland</option>
+                            <option>Spanje</option>
+                            <option>Italië</option>
+                            <option>Griekenland</option>
+                            <option>Polen</option>
+                            <option>Portugal</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="provincie"><strong>Provincie:</strong></label>
+                          <select id="provincie" class="form-control">
+                            <option value="" disabled selected hidden>Kies een provincie</option>
+                            <option>Antwerpen</option>
+                            <option>Limburg</option>
+                            <option>Oost-Vlaanderen</option>
+                            <option>West-Vlaanderen</option>
+                            <option>Vlaams-Brabant</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label for="postcode"><strong>Postcode:</strong></label>
+                          <!-- wel gekozen om een placeholder toe te voegen-->
+                        <input type="text" id="postcode" class="form-control" placeholder="2000">
+                        </div>
+                    </div>     
+                    <hr>
+                    <div class="row">
+                      <div class="col">
+                        <!-- gekozen voor h4 en niet h5 zoals bovenaan de pagina omdat deze tekst mij iets groter leek in het voorbeeld-->
+                        <h4>Hou me op de hoogte</h4>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="nieuwsbrief" id="nieuwsbrief">
+                          <label class="form-check-label" for="defaultCheck1">
+                            Inschrijven voor onze nieuwsbrief.
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="algemene voorwaarden" id="voorwaarden">
+                          <label class="form-check-label" for="defaultCheck2">
+                            Ik ga akkoord met de algemene voorwaarden.
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <h4>Betaling</h4>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="banking" value="Banking app" checked>
+                          <label class="form-check-label" for="exampleRadios1">
+                            Banking app
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="overschrijving" value="Overschrijving">
+                          <label class="form-check-label" for="exampleRadios2">
+                            Overschrijving
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="visa" value="Visa card">
+                          <label class="form-check-label" for="exampleRadios3">
+                            Visa card
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="paypal" value="PayPal">
+                          <label class="form-check-label" for="exampleRadios4">
+                            PayPal
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <!--bootstrap knop moet over de volledige container zijn volgens voorbeeld dus onderstaande zin toevoegen-->
+                    <div class="btn-group" style="width:100%">
+                    <button type="button" id="submitknop" class="btn btn-primary">Awel ja! Ik zen kleir!</button>
+                  </div>
+                </form>
+              </div>
+        </div>
+        <div id="errors" style="width: 30%; float:left; height:100%; margin:15px">
+          <!--hier komt de bootstrap code met error of oké melding(en)-->
+        </div>
+      </div>
+    </main>
+    <!--belangrijke eindopmerking: er werd niet gespecifieerd of hetzelfde document 2x moest kunnen worden-->
+    <!--ik werk vaak met de += methode waarbij dit niet mogelijk is aangezien de nieuwe input dan opgeteld wordt bij de eerste ingave-->
+    <!--gezien er niet in de opgave stond dat dit nodig was ben ik er vanuit gegaan dat elk document slechts 1 unieke keer wordt ingevuld-->
+</body>
+
+<script>
+  
+  let knop = document.getElementById("submitknop");
+  //nieuwe array maken waar we waarden gaan in toevoegen
+  let errors = new Array();
+
+  validateForm = () => {
+    let voornaam = document.getElementById("voornaam").value;
+    let achternaam = document.getElementById("achternaam").value;
+    let gebruikersnaam = document.getElementById("gebruikersnaam").value;
+    let email = document.getElementById("email").value;
+    let wachtwoord = document.getElementById("wachtwoord").value;
+    let checkwachtwoord = document.getElementById("checkwachtwoord").value;
+    let adres = document.getElementById("adres").value;
+    let land = document.getElementById("land").value;
+    let provincie = document.getElementById("provincie").value;
+    let postcode = document.getElementById("postcode").value;
+    let algemeneVoorwaarden = document.getElementById("voorwaarden");
+    let bankingApp = document.getElementById("banking");
+    let overschrijving = document.getElementById("overschrijving");
+    let visa = document.getElementById("visa");
+    let paypal = document.getElementById("paypal");
+    //hier definëren we de tekst als leeg, later vullen we deze op met de gebruikte betalingswijze. 
+    let tekstBetaling = "";
+
+    //controle op lege velden
+    checkEmptyField(voornaam,"voornaam");
+    checkEmptyField(achternaam,"achternaam");
+    checkEmptyField(gebruikersnaam,"gebruikersnaam");
+    //controles van email
+    let checkemail = validateEmail(email);
+    //toevoegen aan array as false
+    if (checkemail == false) errors.push("E-mailadres is niet correct.");
+    //controle op leeg veld voor wachtwoorden hebben we al 
+    checkEmptyField(wachtwoord,"wachtwoord");
+    checkEmptyField(checkwachtwoord,"herhaal wachtwoord");
+    //verdere controle van wachtwoorden enkel nodig als beide velden ingevuld zijn anders is dit sowieso fout en is de volgende code niet nodig
+    if (wachtwoord != "" || checkwachtwoord != "") checkPassword(wachtwoord, checkwachtwoord);
+    checkEmptyField(adres,"adres");
+    checkEmptyField(land,"land");
+    checkEmptyField(provincie,"provincie");
+    checkPC(postcode);
+    //we checken van alle 4 welke is opgevuld. Slechts 1 (de opgevulde) zal tekst terugsturen dus we kunnen dit simpel toevoegen aan een variabele hier genaamd tekstBetaling. 
+    //Deze gebruiken we later als er geen foutmeldingen zijn voor de correcte bootstrap alert te maken.
+    tekstBetaling += validatePayment(bankingApp);
+    tekstBetaling += validatePayment(overschrijving);
+    tekstBetaling += validatePayment(visa);
+    tekstBetaling += validatePayment(paypal);
+    if (!algemeneVoorwaarden.checked) errors.push("Je moet de algemene voorwaarden accepteren.");
+
+    //als de array niet leeg is dan zijn er foutmeldingen, dus alert moet danger zijn:
+    if (errors.length !=0){
+
+      let tekst = "";
+      //We itereren door de array met een for loop om de foutmeldingen op te slaan, makkelijkst dit apart in een stuk tekst zetten
+      for (let i = 0; i < errors.length; i++) {
+      tekst += `${errors[i]}<br>`;
+        }
+
+      //bootstrap alert zichtbaar maken in onze body
+      document.getElementById('errors').innerHTML += 
+      `<div class="alert alert-danger" role="alert"><h4>Lap, foutjes..</h4><p>${tekst}</p></div>`
+    }
+
+    //als de array leeg is dan is het document correct ingevuld, dus alert moet success en info zijn
+    //tekstBetaling geeft hier de code voor de info bootstrap die we hierboven al hebben gemaakt
+    else {
+      document.getElementById('errors').innerHTML += 
+      `<div class="alert alert-success" role="alert"><h4>Amai, da's straf!</h4><p>Top, je werd geregistreerd.</p></div>${tekstBetaling}`
+    }
+
+  };
+
+  //we valideren het formulier als er op de button onderaan wordt gedrukt.
+  knop.addEventListener("click", validateForm,false);
+
+  //er werd gezegd om een volledige melding mee te geven maar een kortere tekst is efficiënter: minder code schrijven
+  //gekozen dus om 'melding' enkel 1 woord mee te geven
+  checkEmptyField = (veld, melding) => {
+    let zin = "";
+
+    if (veld == ""){
+            zin += `Het veld ${melding} is vereist.`;
+            //toevoegen van foutmelding aan array
+            errors.push(zin);         
+    }
+    //aangezien we zelf al een optie hebben ingevuld definiëren we deze invoer als de fout. dit zou geven dat als iemand in een ander veld
+    //"kies een land" of "kies een provinvie" invult dit ook fout is, maar dat zou in deze velden totaal onzinning zijn
+    else if (veld == "Kies een land"){
+            zin += `Het veld ${melding} is vereist.`;
+            errors.push(zin);         
+    }
+
+    else if (veld == "Kies een provincie"){
+            zin += `Het veld ${melding} is vereist.`;
+            errors.push(zin);         
+    }
+  };
+  
+  //hier nog het streepje van e- fiksen, dit geeft fout. hier bvb als toegevoegd tellen en dan skipt de rest, lege waarde nog fiksen
+  validateEmail = email => {
+
+      //eerst controleren of mail leeg is (minstens 1 karakter) of @ bevat. Indien niet moeten we niet verder gaan want sowieso fout. @ is nodig voor volgende codes.
+      if (email == "" || !email.includes("@")){
+          return false;         
+      }
+
+      //de rest samen in aparte else zodat de split functie niet wordt uitgevoerd als @ er niet is. 
+      else {
+          //eerst mail opslitsen in gebruikersnaam en domein https://linuxhint.com/split-full-name-into-first-and-last-in-javascript/
+          let mail = email.split('@');
+          //alles voor @ is gebruikersnaam
+          let gebruikersnaam = mail[0];
+          //eerste letter: https://www.freecodecamp.org/news/how-to-capitalize-the-first-letter-of-a-string-in-javascript/
+          let eersteKarakterGebruikersnaam = gebruikersnaam.charAt(0);
+          //alles na @ is domein
+          let domein = mail[1];
+          let eersteKarakterDomein = domein.charAt(0);
+
+          //voorwaarden gebruikersnaam: eerste char geen punt of koppelteken
+          if (eersteKarakterGebruikersnaam == "." || eersteKarakterGebruikersnaam == "-"){
+            return false;;
+          }
+
+          //voorwaarden gebruikersnaam: enkel letters, nummers of underscores (en punten of koppeltekens hier, niet als eerste is hierboven getest) bevatten. 
+          //Geeft true terug als input enkel wat binnen haakjes staat bevat. https://regexr.com./ https://codingbeautydev.com/blog/javascript-check-if-string-contains-only-letters-and-numbers/?utm_content=cmp-true https://stackoverflow.com/questions/28708711/regex-must-start-with-a-letter-or-number-string-can-only-have-letters-numbers
+          if (/^[_.A-Za-z0-9-]*$/.test(gebruikersnaam) == false) return false;;
+
+          //voorwaarden domein: eerste char letter of nummer
+          if (/^[A-Za-z0-9]*$/.test(eersteKarakterDomein) == false) return false;;
+
+          //voorwaarden domein: mag punt of koppelteken bevatten. Hier niet opgegeven maar ik ga er van uit letters en nummers ook. Hier geen underscores toegestaan.
+          if (/^[.A-Za-z0-9-]*$/.test(domein) == false) return false;
+
+          else {return true;}
+      }
+  };
+
+  checkPassword = (wachtwoord, checkwachtwoord) => {
+    //hier de keuze gemaakt dat deze 2 meldingen samen mogen voorkomen, dit werd niet gespecifieerd in de opgave
+    if (wachtwoord.length < 8) errors.push("Je wachtwoord bevat minder dan 8 tekens.");   
+    if (wachtwoord != checkwachtwoord) errors.push("Je wachtwoorden komen niet overeen.");   
+  };
+
+  checkPC = veld => {
+    if (veld == "") return errors.push("Het veld postcode is vereist.");
+    if (veld <1000 || veld > 9999) return errors.push("De waarde van postcode moet tussen 1000 en 9999 liggen.");
+  };
+
+  //https://www.javatpoint.com/how-to-check-a-radio-button-using-javascript
+  validatePayment = veld => {
+    //deze code vormt de juiste bootstrap alert
+    if (veld.checked) return`<div class="alert alert-info" role="alert"><h4>Betalingswijze</h4><p>Je betalingswijze is ${veld.value}.</p></div>`;
+    else return "";
+  };
+
+</script>
+
