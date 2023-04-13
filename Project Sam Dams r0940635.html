@@ -21,9 +21,6 @@
                 <h1 style="text-align: center;">Laat ons contact houden!</h1>
                 <h4 style="text-align: center;">Momenteel nog student, binnenkort collega? </h4>
                 <!-- alles over forms: https://getbootstrap.com/docs/4.0/components/forms/ -->
-                <!--  mx auto class zorgt voor horizontal center fixing https://getbootstrap.com/docs/4.0/utilities/spacing/-->
-                <!--  novaidate zorgt ervoor dat we eigen valideren berichten kunnen geven https://getbootstrap.com/docs/5.0/forms/validation/-->
-              
                 <form style="margin: 20px;">
                     <div class="row">
                       <div class="col">
@@ -58,7 +55,7 @@
                             <label for="wachtwoord">Kies een wachtwoord:</label>
                             <input type="password" id="wachtwoord" class="form-control" aria-describedby="passwordHelpBlock">
                             <small id="passwordHelpBlock" class="form-text text-muted">
-                            Je wachtwoord moet minimaal 7 tekens lang zijn en een cijfer bevatten.
+                            Je wachtwoord moet minimaal 8 tekens lang zijn.
                             </small>
                         </div>
                         <div class="col">
@@ -102,7 +99,7 @@
                         </div>
                         <div class="form-group col-md-2">
                           <label for="postcode">Postcode:</label>
-                        <input type="text" id="postcode" class="form-control" placeholder="2000" required>
+                        <input type="text" id="postcode" class="form-control" placeholder="2000">
                         </div>
                     </div>     
                     <hr>
@@ -110,13 +107,13 @@
                       <div class="col">
                         <h4>Hou me op de hoogte</h4>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <input class="form-check-input" type="checkbox" value="nieuwsbrief" id="nieuwsbrief">
                           <label class="form-check-label" for="defaultCheck1">
                             Inschrijven op de nieuwsbrief.
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                          <input class="form-check-input" type="checkbox" value="algemene voorwaarden" id="voorwaarden">
                           <label class="form-check-label" for="defaultCheck2">
                             Ik ga akkoord met de algemene voorwaarden.
                           </label>
@@ -125,25 +122,25 @@
                       <div class="col">
                         <h4>Betaling</h4>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="banking" value="Banking app" checked>
                           <label class="form-check-label" for="exampleRadios1">
                             Banking app
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="overschrijving" value="Overschrijving">
                           <label class="form-check-label" for="exampleRadios2">
                             Overschrijving
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="visa" value="Visa card">
                           <label class="form-check-label" for="exampleRadios3">
                             Visa card
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="paypal" value="PayPal">
                           <label class="form-check-label" for="exampleRadios4">
                             PayPal
                           </label>
@@ -155,10 +152,8 @@
                 </form>
               </div>
         </div>
-        <div style="width: 30%; float:left; height:100%; margin:15px">
-          <!--padding nog vrbergen-->
-          <div id="errors" style="background-color: hwb(323 51% 9% / 0.836); padding: 10px;">
-          </div>
+        <div id="errors" style="width: 30%; float:left; height:100%; margin:15px">
+          <!--hier komt de bootstrap code met error of oké melding(en)-->
         </div>
       </div>
     </main>
@@ -179,30 +174,61 @@
     let land = document.getElementById("land").value;
     let provincie = document.getElementById("provincie").value;
     let postcode = document.getElementById("postcode").value;
+    let algemeneVoorwaarden = document.getElementById("voorwaarden");
+    let bankingApp = document.getElementById("banking");
+    let overschrijving = document.getElementById("overschrijving");
+    let visa = document.getElementById("visa");
+    let paypal = document.getElementById("paypal");
+    //hier definëren we de tekst als leeg, later vullen we deze op met de gebruikte betalingswijze. 
+    let tekstBetaling = "";
 
     //hier eigenlijk melding nodig maar kortere tekst is efficiënter
     //controle op lege velden
     checkEmptyField(voornaam,"voornaam");
     checkEmptyField(achternaam,"achternaam");
     checkEmptyField(gebruikersnaam,"gebruikersnaam");
+    let checkemail = validateEmail(email);
+    //toevoegen aan array as false
+    if (checkemail == false) errors.push("E-mailadres is niet correct.");
+    //controle op leeg veld voor wachtwoorden hebben we al 
+    checkEmptyField(wachtwoord,"wachtwoord");
+    checkEmptyField(checkwachtwoord,"herhaal wachtwoord");
+    //verdere controle van wachtwoorden enkel als beide velden ingevuld zijn
+    if (wachtwoord != "" || checkwachtwoord != "") checkPassword(wachtwoord, checkwachtwoord);
     checkEmptyField(adres,"adres");
     checkEmptyField(land,"land");
     checkEmptyField(provincie,"provincie");
+    checkPC(postcode);
+    //we checken van alle 4 welke is opgevuld. Slechts 1 zal tekst terugsturen dus we kunnen dit simpel toevoegen aan een tekst. Deze gebruiken we later als er geen foutmeldingen zijn voor een boodschap te maken.
+    tekstBetaling += validatePayment(bankingApp);
+    tekstBetaling += validatePayment(overschrijving);
+    tekstBetaling += validatePayment(visa);
+    tekstBetaling += validatePayment(paypal);
+    if (!algemeneVoorwaarden.checked) errors.push("Je moet de algemene voorwaarden accepteren.");
 
-    let checkemail = validateEmail(email);
-    if (checkemail == false) errors.push("E-mailadres is niet correct.");
-    //toevoegen aan array as false
-    
+    //als de array niet leeg is dan zijn er foutmeldingen, dus alert moet danger zijn:
+    if (errors.length !=0){
 
-    //We itereren door de arrar met een for loop om de foutmeldingen te tonen
-    // hier nog als array leeg is dan juist, anders dit
-    for (let i = 0; i < errors.length; i++) {
-      document.getElementById('errors').innerHTML += `${errors[i]}<br>`;
+      let tekst = "";
+      //We itereren door de arrar met een for loop om de foutmeldingen op te slaan
+      for (let i = 0; i < errors.length; i++) {
+      tekst += `${errors[i]}<br>`;
         }
+
+      //bootstrap alert zichtbaar maken in onze body
+      document.getElementById('errors').innerHTML += 
+      `<div class="alert alert-danger" role="alert"><h4>Yikes,errors..</h4><p>${tekst}</p></div>`
+    }
+
+    else {
+      document.getElementById('errors').innerHTML += 
+      `<div class="alert alert-success" role="alert"><h4>Goed gedaan!</h4><p>Aww yeah, je werd geregistreerd.</p></div>${tekstBetaling}`
+    }
+
   };
 
   knop.addEventListener("click", validateForm,false);
-  //nog brek toevoefen om dubbel te vermijden?
+
   checkEmptyField = (veld, melding) => {
       let zin = "";
 
@@ -226,51 +252,58 @@
   
   //hier nog het streepje van e- fiksen, dit geeft fout. hier bvb als toegevoegd tellen en dan skipt de rest, lege waarde nog fiksen
   validateEmail = email => {
-      //eerst mail opslitsen in gebruikersnaam en domein https://linuxhint.com/split-full-name-into-first-and-last-in-javascript/
-      //break toevoegen?
-      let mail = email.split('@');
-      let gebruikersnaam = mail[0];
-      //eerste letter: https://www.freecodecamp.org/news/how-to-capitalize-the-first-letter-of-a-string-in-javascript/
-      let eersteKarakterGebruikersnaam = gebruikersnaam.charAt(0);
-      let domein = mail[1];
-      let eersteKarakterDomein = domein.charAt(0);
-      let controle = 0;   
+      let controle = 0;  
 
-      //voorwaarden gebruikersnaam: minstens 1 char lang 
-      if (gebruikersnaam.length < 1){
-          controle ++;           
+      //eerst controleren of mail leeg is (minstens 1 karakter) of @ bevat. Indien niet moeten we niet verder gaan want sowieso fout. @ is nodig voor volgende codes.
+      if (email == "" || !email.includes("@")){
+          return false;         
       }
 
-      //voorwaarden gebruikersnaam: eerste char geen punt of koppelteken
-      if (eersteKarakterGebruikersnaam == "." || eersteKarakterGebruikersnaam == "-"){
-          controle ++;
+      //de rest samen in aparte else zodat de split functie niet wordt uitgevoerd als @ er niet is. 
+      else {
+          //eerst mail opslitsen in gebruikersnaam en domein https://linuxhint.com/split-full-name-into-first-and-last-in-javascript/
+          //break toevoegen?
+          let mail = email.split('@');
+          let gebruikersnaam = mail[0];
+          //eerste letter: https://www.freecodecamp.org/news/how-to-capitalize-the-first-letter-of-a-string-in-javascript/
+          let eersteKarakterGebruikersnaam = gebruikersnaam.charAt(0);
+          let domein = mail[1];
+          let eersteKarakterDomein = domein.charAt(0);
+
+          //voorwaarden gebruikersnaam: eerste char geen punt of koppelteken
+          if (eersteKarakterGebruikersnaam == "." || eersteKarakterGebruikersnaam == "-"){
+            return false;;
+          }
+
+          //voorwaarden gebruikersnaam: enkel letters, nummers of underscores (en punten of koppeltekens hier, niet als eerste is hierboven getest) bevatten. 
+          //Geeft true terug als input enkel wat binnen haakjes bevat. https://regexr.com./ https://codingbeautydev.com/blog/javascript-check-if-string-contains-only-letters-and-numbers/?utm_content=cmp-true https://stackoverflow.com/questions/28708711/regex-must-start-with-a-letter-or-number-string-can-only-have-letters-numbers
+          if (/^[_.A-Za-z0-9-]*$/.test(gebruikersnaam) == false) return false;;
+
+          //voorwaarden domein: eerste char letter of nummer
+          if (/^[A-Za-z0-9]*$/.test(eersteKarakterDomein) == false) return false;;
+
+          //voorwaarden domein: mag punt of koppelteken bevatten. Hier niet opgegeven maar ik ga er van uit letters en nummers ook. Hier geen underscores toegestaan.
+          if (/^[.A-Za-z0-9-]*$/.test(domein) == false) return false;
+
+          else {return true;}
       }
+  };
 
-      //voorwaarden gebruikersnaam: enkel letters, nummers of underscores (en punten of koppeltekens hier, niet als eerste is hierboven getest) bevatten. 
-      //Geeft true terug als input enkel wat binnen haakjes bevat. https://regexr.com./ https://codingbeautydev.com/blog/javascript-check-if-string-contains-only-letters-and-numbers/?utm_content=cmp-true https://stackoverflow.com/questions/28708711/regex-must-start-with-a-letter-or-number-string-can-only-have-letters-numbers
-      if (/^[_.A-Za-z0-9-]*$/.test(gebruikersnaam) == false) controle ++;
+  checkPassword = (wachtwoord, checkwachtwoord) => {
+    //hier de keuze gemaakt dat deze 2 meldingen samen mogen voorkomen. 
+    if (wachtwoord.length < 8) errors.push("Je wachtwoord bevat minder dan 8 tekens.");   
+    if (wachtwoord != checkwachtwoord) errors.push("Je wachtwoorden komen niet overeen.");   
+  };
 
-      //voorwaarden domein: eerste char letter of nummer
-      if (/^[A-Za-z0-9]*$/.test(eersteKarakterDomein) == false) controle ++;
+  checkPC = veld => {
+    if (veld == "") return errors.push("Het veld postcode is vereist.");
+    if (veld <1000 || veld > 9999) return errors.push("De waarde van postcode moet tussen 1000 en 9999 liggen.");
+  };
 
-      //voorwaarden domein: mag punt of koppelteken bevatten. Hier niet opgegeven maar ik ga er van uit letters en nummers ook. Hier geen underscores toegestaan.
-      if (/^[.A-Za-z0-9-]*$/.test(gebruikersnaam) == false) controle ++;
-
-      //controle:document.write(controle)
-      //if not null than false
-      if (controle == 0){
-          return true;
-      }
-
-      else {return false;}
+  //https://www.javatpoint.com/how-to-check-a-radio-button-using-javascript
+  validatePayment = veld => {
+    if (veld.checked) return`<div class="alert alert-info" role="alert"><h4>Betalingswijze</h4><p>Je betalingswijze is ${veld.value}.</p></div>`;
   };
 
 </script>
-
-
-<!-- TO DO:
-  nog toevoegen: <h4 style="color: brown;">Yikes, errors..</h4><br>
-tekst in errors nog kleur geven
-//nog goed toevoegen
-domein mail is alles achter de @-->
 
