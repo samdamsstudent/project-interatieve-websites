@@ -322,6 +322,8 @@
 
   checkPC = veld => {
     if (veld == "") return errors.push("Het veld postcode is vereist.");
+    //de functie isNan controleert of een input NIET een nummer is: https://mkyong.com/javascript/check-if-variable-is-a-number-in-javascript/
+    if (isNaN(veld)) return errors.push("Het veld postcode moet een getal zijn en tussen 1000 en 9999 liggen.");
     if (veld <1000 || veld > 9999) return errors.push("De waarde van postcode moet tussen 1000 en 9999 liggen.");
   };
 
